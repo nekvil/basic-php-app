@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteBase /backend/views/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ /sepium/backend/$1 [L,R=301]
