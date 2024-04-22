@@ -37,28 +37,28 @@ class UserController {
             return;
         }
     
-        if (!isset($_POST['name'], $_POST['email'], $_POST['password'])) {
+        $name = isset($_POST['name']) ? trim($_POST['name']) : '';
+        $email = isset($_POST['email']) ? trim($_POST['email']) : '';
+        $password = isset($_POST['password']) ? $_POST['password'] : '';
+        
+        if (empty($name) || empty($email) || empty($password)) {
             $response = ['success' => false, 'message' => 'Required data is missing'];
             echo json_encode($response);
             return;
         }
     
-        $name = $_POST['name'];
-        $email = $_POST['email'];
-        $password = $_POST['password'];
+        $name = strip_tags($name);
+        $email = strip_tags($email);
     
-        if (!is_string($name) || !is_string($email) || !is_string($password)) {
-            $response = ['success' => false, 'message' => 'Invalid data format'];
-            echo json_encode($response);
-            return;
-        }
-
+        $name = htmlspecialchars($name);
+        $email = htmlspecialchars($email);
+    
         if (strlen($name) < MIN_NAME_LENGTH || strlen($name) > MAX_NAME_LENGTH) {
             $response = ['success' => false, 'message' => 'Invalid name length'];
             echo json_encode($response);
             return;
         }
-
+    
         if (strlen($password) < MIN_PASSWORD_LENGTH || strlen($password) > MAX_PASSWORD_LENGTH) {
             $response = ['success' => false, 'message' => 'Invalid password length'];
             echo json_encode($response);
@@ -74,7 +74,13 @@ class UserController {
 
         require_once $_SERVER['DOCUMENT_ROOT'] . BASE_PATH . 'backend/models/UserModel.php';
         $userModel = new UserModel();
-    
+        
+        if ($userModel->getUserByEmail($email)) {
+            $response = ['success' => false, 'message' => 'Email already exists'];
+            echo json_encode($response);
+            return;
+        }
+
         $success = $userModel->createUser($name, $email, $password);
         if ($success) {
             $response = ['success' => true, 'message' => 'User added successfully'];

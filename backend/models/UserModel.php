@@ -27,4 +27,10 @@ class UserModel {
         $stmt->execute([$userId]);
         return $stmt->rowCount() > 0;
     }
+
+    public function getUserByEmail($email) {
+        $stmt = $this->pdo->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->execute([$email]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
