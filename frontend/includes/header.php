@@ -33,6 +33,3 @@
             </nav>
         </header>
         <main role="main" class="container mt-4">
-
-    </body>
-</html>

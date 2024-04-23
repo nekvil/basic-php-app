@@ -40,15 +40,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . BASE_PATH . 'backend/includes/header.ph
                 <form id="addUserForm">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" minlength="<?php echo MIN_NAME_LENGTH; ?>" required>
+                        <input type="text" class="form-control" id="name" name="name" minlength="<?php echo MIN_NAME_LENGTH; ?>" autocomplete="on" required>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" name="email" required>
+                        <input type="email" class="form-control" id="email" name="email" autocomplete="on" required>
                     </div>
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" minlength="<?php echo MIN_PASSWORD_LENGTH; ?>" required>
+                        <input type="password" class="form-control" id="password" name="password" minlength="<?php echo MIN_PASSWORD_LENGTH; ?>" autocomplete="current-password" required>
+                        <label for="password" class="text-white">Password</label>" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block d-block mx-auto w-100 mb-2">Add</button>
                 </form>

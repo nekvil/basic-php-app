@@ -8,26 +8,13 @@ class UserController {
         require_once $_SERVER['DOCUMENT_ROOT'] . BASE_PATH . 'backend/models/UserModel.php';
         $userModel = new UserModel();
         
-        $result = $userModel->getUsers();
+        $users = $userModel->getUsers();
     
-        if (count($result) > 0) {
-            $tableData = '';
-
-            foreach ($result as $row) {
-                $tableData .= '<tr>';
-                $tableData .= '<td>' . $row['id'] . '</td>';
-                $tableData .= '<td>' . $row['name'] . '</td>';
-                $tableData .= '<td>' . $row['email'] . '</td>';
-                $tableData .= '<td>' . $row['password'] . '</td>';
-                $tableData .= '<td>' . $row['created_at'] . '</td>';
-                $tableData .= '<td><button class="deleteUser btn btn-danger btn-sm" data-id="' . $row['id'] . '"><i class="bi bi-trash"></i></button></td>';
-                $tableData .= '</tr>';
-            }
-
-            echo $tableData;
-        } else {
-            echo "<tr><td colspan='6'>No users found.</td></tr>";
-        }
+        ob_start();
+        include $_SERVER['DOCUMENT_ROOT'] . BASE_PATH . 'backend/views/user/table.php';
+        $tableData = ob_get_clean();
+    
+        echo $tableData;
     }
 
     public static function actionCreateUser() {

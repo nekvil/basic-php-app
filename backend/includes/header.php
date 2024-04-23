@@ -14,7 +14,6 @@ $isLoggedIn = AuthController::isLoggedIn();
         <link rel="apple-touch-icon" sizes="180x180" href="<?php echo BASE_PATH; ?>assets/favicon_io/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="192x192" href="<?php echo BASE_PATH; ?>assets/favicon_io/android-chrome-192x192.png">
         <link rel="icon" type="image/png" sizes="512x512" href="<?php echo BASE_PATH; ?>assets/favicon_io/android-chrome-512x512.png">
-        <link rel="manifest" href="<?php echo BASE_PATH; ?>site.webmanifest">
         <link href="<?php echo BASE_PATH; ?>assets/css/bootstrap.min.css" rel="stylesheet">
         <link href="<?php echo BASE_PATH; ?>assets/css/custom.css" rel="stylesheet">
         <link href="<?php echo BASE_PATH; ?>assets/bootstrap-icons-1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
@@ -51,6 +50,3 @@ $isLoggedIn = AuthController::isLoggedIn();
             </nav>
         </header>
         <main role="main" class="container mt-4">
-
-    </body>
-</html>
