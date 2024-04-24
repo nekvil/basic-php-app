@@ -49,7 +49,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . BASE_PATH . 'backend/includes/header.ph
                     <div class="mb-4">
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" minlength="<?php echo MIN_PASSWORD_LENGTH; ?>" autocomplete="current-password" required>
-                        <label for="password" class="text-white">Password</label>" required>
                     </div>
                     <button type="submit" class="btn btn-primary btn-block d-block mx-auto w-100 mb-2">Add</button>
                 </form>
